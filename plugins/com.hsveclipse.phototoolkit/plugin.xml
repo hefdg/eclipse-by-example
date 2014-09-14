@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated exif -->
+      <package
+            uri="http://xmlns.oracle.com/ord/meta/exif"
+            class="com.oracle.xmlns.ord.meta.exif.ExifPackage"
+            genModel="model/exif.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated exif -->
+      <parser
+            type="exif"
+            class="com.oracle.xmlns.ord.meta.exif.util.ExifResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated phototoolkit -->
+      <package
+            uri="http://com.hsveclipse.phototoolkit/1.0"
+            class="com.hsveclipse.phototoolkit.PhototoolkitPackage"
+            genModel="model/phototoolkit.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated phototoolkit -->
+      <parser
+            type="phototoolkit"
+            class="com.hsveclipse.phototoolkit.util.PhototoolkitResourceFactoryImpl"/>
+   </extension>
+</plugin>

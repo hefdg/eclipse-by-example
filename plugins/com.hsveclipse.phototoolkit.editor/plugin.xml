@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated phototoolkit -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="com.hsveclipse.phototoolkit.presentation.PhototoolkitModelWizardID"
+            name="%_UI_PhototoolkitModelWizard_label"
+            class="com.hsveclipse.phototoolkit.presentation.PhototoolkitModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/PhototoolkitModelFile.gif">
+         <description>%_UI_PhototoolkitModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated exif -->
+      <editor
+            id="com.oracle.xmlns.ord.meta.exif.presentation.ExifEditorID"
+            name="%_UI_ExifEditor_label"
+            icon="icons/full/obj16/ExifModelFile.gif"
+            extensions="exif"
+            class="com.oracle.xmlns.ord.meta.exif.presentation.ExifEditor"
+            contributorClass="com.oracle.xmlns.ord.meta.exif.presentation.ExifActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated phototoolkit -->
+      <editor
+            id="com.hsveclipse.phototoolkit.presentation.PhototoolkitEditorID"
+            name="%_UI_PhototoolkitEditor_label"
+            icon="icons/full/obj16/PhototoolkitModelFile.gif"
+            extensions="phototoolkit"
+            class="com.hsveclipse.phototoolkit.presentation.PhototoolkitEditor"
+            contributorClass="com.hsveclipse.phototoolkit.presentation.PhototoolkitActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

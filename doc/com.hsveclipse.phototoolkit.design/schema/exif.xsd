@@ -1,0 +1,1187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Copyright (c) 2004, 2005, Oracle.  All rights reserved. --><xsd:schema xmlns="http://xmlns.oracle.com/ord/meta/exif" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/ord/meta/exif" version="1.0">
+ 
+  <xsd:annotation>
+    <xsd:documentation>
+    
+      Introduction
+ 
+        This is the Oracle interMedia schema for image metadata stored
+        in the EXIF format for digital still cameras. This schema supports
+        tags defined up to EXIF version 2.21
+ 
+        Metadata extracted only from the 0th IFD. For JPEG images, this means
+        that the metadata comes from the main image in the file. Metadata is not
+        extracted for the thumbnail image (1st IFD).
+ 
+      Structure
+ 
+        This schema defines a single global element exifMetadata which
+        contains up to four child elements. Each child element contains tags
+        from a TIFF IFD directory as defined by the EXIF standard.
+ 
+              TiffIfd contains tags from the TIFF IFD. 
+              ExifIfd contains tags from the EXIF IFD. 
+              GpsIfd  contains tags from the GPS IFD. 
+              InteroperabilityIfd contains tags from the Interoperability IFD.
+ 
+        All elements that derive directly from EXIF tags contain a required 
+        "tag" attribute. The value of this attribute is the Tag ID value as
+        defined in the EXIF standard.
+   
+      Unsupported tags
+        The table below lists tags that are defined by the EXIF standard
+        but which the current version of Oracle interMedia does not 
+        read from image files. Note that this schema does define data 
+        models for these tags and future versions of Oracle
+        interMedia may parse these fields from image files. Those tags 
+        could be represented by documents conforming to this schema.
+ 
+          These tags are from the TIFF IFD
+          tag   301:  TransferFunction
+          tag   318:  WhitePoint
+          tag   319:  PrimaryChromaticities
+          tag   529:  YCbCrCoefficients
+          tag   532:  ReferenceWhiteBlack
+ 
+          tag   273:  StripOffsets
+          tag   278:  RowsPerStrip
+          tag   279:  StripByteCounts
+          tag   513:  JPEGInterChangeFormat
+          tag   514:  JPEGInterChangeFormatLength
+ 
+          These tags are from the EXIF IFD
+ 
+          tag 34855:  ISOSpeedRatings
+          tag 34856:  OECF
+          tag 37396:  SubjectArea
+          tag 37500:  MakerNote
+          tag 41484:  SpatialFrequencyResponse
+          tag 41492:  SubjectLocation
+          tag 41730:  CFAPattern
+          tag 41995:  DeviceSettingsDescription
+          tag 42016:  ImageUniqueID
+ 
+    </xsd:documentation>
+  </xsd:annotation>
+ 
+ 
+  <!-- 
+    ATTRIBUTE DEFINITIONS 
+   -->
+  <xsd:attributeGroup name="exifAttrs">
+    <xsd:annotation>
+      <xsd:documentation>
+         This attribute group defines a single attribute that is required
+         for all elements. The tag attribute value is the TIFF tag value 
+         (in decimal) that is the datasource  for the tag.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="tag" type="xsd:nonNegativeInteger" use="required"/>
+  </xsd:attributeGroup>
+ 
+ 
+  <!-- BASE TYPE DEFINITIONS
+         Base types are formed from the simple XML schema types.
+         Sometimes restrictions are added.
+         They are extended with the required "tag" attribute
+   -->
+  <xsd:complexType name="positiveIntegerType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:positiveInteger">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="nonNegativeIntegerType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:nonNegativeInteger">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="stringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="nonNegativeRealType">
+    <xsd:simpleContent>
+      <xsd:extension base="nonNegativeReal">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="nonNegativeReal">
+    <xsd:restriction base="xsd:float">
+      <xsd:minInclusive value="0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="realType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:float">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="dateType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:date">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="dateTimeType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:dateTime">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="timeType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:time">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+ 
+ 
+  <!-- EXIF TYPE DEFINITIONS
+       Generally these types are formed from a simple type that is restricted.
+       The simple type is extended with the required 'tag' attribute
+       These types form the basis for the document elements
+    -->
+  <xsd:complexType name="colorSpaceType">
+    <xsd:simpleContent>
+      <xsd:extension base="colorSpace_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="colorSpace_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="sRGB"/>
+      <xsd:enumeration value="Uncalibrated"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="exposureProgramType">
+    <xsd:simpleContent>
+      <xsd:extension base="exposureProgram_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="exposureProgram_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Not defined"/>
+      <xsd:enumeration value="Manual"/>
+      <xsd:enumeration value="Normal program"/>
+      <xsd:enumeration value="Aperture priority"/>
+      <xsd:enumeration value="Shutter priority"/>
+      <xsd:enumeration value="Creative program"/>
+      <xsd:enumeration value="Action program"/>
+      <xsd:enumeration value="Portrait mode"/>
+      <xsd:enumeration value="Landscape mode"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="meteringModeType">
+    <xsd:simpleContent>
+      <xsd:extension base="meteringMode_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="meteringMode_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="unknown"/>
+      <xsd:enumeration value="Average"/>
+      <xsd:enumeration value="Center Weighted Average"/>
+      <xsd:enumeration value="Spot"/>
+      <xsd:enumeration value="MultiSpot"/>
+      <xsd:enumeration value="Pattern"/>
+      <xsd:enumeration value="Partial"/>
+      <xsd:enumeration value="other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="lightSourceType">
+    <xsd:simpleContent>
+      <xsd:extension base="lightSource_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="lightSource_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="unknown"/>
+      <xsd:enumeration value="Daylight"/>
+      <xsd:enumeration value="Fluorescent"/>
+      <xsd:enumeration value="Tungsten"/>
+      <xsd:enumeration value="Flash"/>
+      <xsd:enumeration value="Fine weather"/>
+      <xsd:enumeration value="Cloudy weather"/>
+      <xsd:enumeration value="Shade"/>
+      <xsd:enumeration value="Daylight fluorescent"/>
+      <xsd:enumeration value="Day white fluorescent"/>
+      <xsd:enumeration value="Cool white fluorescent"/>
+      <xsd:enumeration value="Standard light A"/>
+      <xsd:enumeration value="Standard light B"/>
+      <xsd:enumeration value="Standard light C"/>
+      <xsd:enumeration value="D55"/>
+      <xsd:enumeration value="D65"/>
+      <xsd:enumeration value="D75"/>
+      <xsd:enumeration value="D50"/>
+      <xsd:enumeration value="ISO studio tungsten"/>
+      <xsd:enumeration value="other light source"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="flashType">
+    <xsd:sequence>
+      <xsd:element name="Fired" type="yesNo_t"/>
+      <xsd:element minOccurs="0" name="Return" type="flashReturn_t"/>
+      <xsd:element minOccurs="0" name="Mode" type="flashMode_t"/>
+      <xsd:element minOccurs="0" name="Function" type="yesNo_t"/>
+      <xsd:element minOccurs="0" name="RedEyeReduction" type="yesNo_t"/>
+    </xsd:sequence>
+    <xsd:attributeGroup ref="exifAttrs"/>
+  </xsd:complexType>
+  <xsd:simpleType name="yesNo_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Yes"/>
+      <xsd:enumeration value="No"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="flashReturn_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="No strobe return function"/>
+      <xsd:enumeration value="Strobe return not detected"/>
+      <xsd:enumeration value="Strobe return detected"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="flashMode_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="unknown"/>
+      <xsd:enumeration value="Compulsory firing"/>
+      <xsd:enumeration value="Compulsory suppression"/>
+      <xsd:enumeration value="Auto"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="resolutionType">
+    <xsd:simpleContent>
+      <xsd:extension base="resolution_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="resolution_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="inches"/>
+      <xsd:enumeration value="centimeters"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="sensingMethodType">
+    <xsd:simpleContent>
+      <xsd:extension base="sensingMethod_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="sensingMethod_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Not defined"/>
+      <xsd:enumeration value="One-chip color area"/>
+      <xsd:enumeration value="Two-chip color area"/>
+      <xsd:enumeration value="Three-chip color area"/>
+      <xsd:enumeration value="Color-sequential area"/>
+      <xsd:enumeration value="Trilinear"/>
+      <xsd:enumeration value="Color sequential linear"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="fileSourceType">
+    <xsd:simpleContent>
+      <xsd:extension base="fileSource_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="fileSource_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="others"/>
+      <xsd:enumeration value="scanner of transparent type"/>
+      <xsd:enumeration value="scanner of reflex type"/>
+      <xsd:enumeration value="DSC"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="bitsPerSampleType">
+    <xsd:simpleContent>
+      <xsd:extension base="bitsPerSample_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="bitsPerSample_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="8,8,8"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="compressionType">
+    <xsd:simpleContent>
+      <xsd:extension base="compression_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="compression_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="uncompressed"/>
+      <xsd:enumeration value="JPEG"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="photometricInterpretationType">
+    <xsd:simpleContent>
+      <xsd:extension base="photometricInterpretation_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="photometricInterpretation_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="RGB"/>
+      <xsd:enumeration value="YCbCr"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="orientationType">
+    <xsd:simpleContent>
+      <xsd:extension base="orientation_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="orientation_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="top left"/>
+      <xsd:enumeration value="top right"/>
+      <xsd:enumeration value="bottom right"/>
+      <xsd:enumeration value="bottom left"/>
+      <xsd:enumeration value="left top"/>
+      <xsd:enumeration value="right top"/>
+      <xsd:enumeration value="right bottom"/>
+      <xsd:enumeration value="left bottom"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="planarConfigurationType">
+    <xsd:simpleContent>
+      <xsd:extension base="planarConfiguration_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="planarConfiguration_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="chunky"/>
+      <xsd:enumeration value="planar"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="yCbCrSubSamplingType">
+    <xsd:simpleContent>
+      <xsd:extension base="yCbCrSubSampling_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="yCbCrSubSampling_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="4:2:2"/>
+      <xsd:enumeration value="4:2:0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="yCbCrPositioningType">
+    <xsd:simpleContent>
+      <xsd:extension base="yCbCrPositioning_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="yCbCrPositioning_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="centered"/>
+      <xsd:enumeration value="co-sited"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="stripOffsetsType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="StripOffset">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Index" type="xsd:nonNegativeInteger"/>
+            <xsd:element name="Offset" type="xsd:positiveInteger"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attributeGroup ref="exifAttrs"/>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="stripByteCountsType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="StripByteCount">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Index" type="xsd:nonNegativeInteger"/>
+            <xsd:element name="Bytes" type="xsd:positiveInteger"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attributeGroup ref="exifAttrs"/>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="whitePointType">
+    <xsd:complexContent>
+      <xsd:extension base="chromaticity">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="primaryChromaticitiesType">
+    <xsd:sequence>
+      <xsd:element name="Color_1" type="chromaticity"/>
+      <xsd:element name="Color_2" type="chromaticity"/>
+      <xsd:element name="Color_3" type="chromaticity"/>
+    </xsd:sequence>
+    <xsd:attributeGroup ref="exifAttrs"/>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="chromaticity">
+    <xsd:sequence>
+      <xsd:element name="X" type="nonNegativeReal"/>
+      <xsd:element name="Y" type="nonNegativeReal"/>
+    </xsd:sequence>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="yCbCrCoefficientsType">
+    <xsd:sequence>
+      <xsd:element name="Coefficient_1" type="nonNegativeReal"/>
+      <xsd:element name="Coefficient_2" type="nonNegativeReal"/>
+      <xsd:element name="Coefficient_3" type="nonNegativeReal"/>
+    </xsd:sequence>
+    <xsd:attributeGroup ref="exifAttrs"/>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="subjectLocationType">
+    <xsd:sequence>
+      <xsd:element name="CenterX" type="xsd:nonNegativeInteger"/>
+      <xsd:element name="CenterY" type="xsd:nonNegativeInteger"/>
+    </xsd:sequence>
+    <xsd:attributeGroup ref="exifAttrs"/>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="subjectAreaType">
+    <xsd:complexContent>
+      <xsd:extension base="subjectLocationType">
+        <xsd:choice>
+          <xsd:element name="Diameter" type="xsd:positiveInteger"/>
+          <xsd:sequence>
+            <xsd:element name="Width" type="xsd:positiveInteger"/>
+            <xsd:element name="Height" type="xsd:positiveInteger"/>
+          </xsd:sequence>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="customRenderedType">
+    <xsd:simpleContent>
+      <xsd:extension base="customRendered_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="customRendered_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Normal process"/>
+      <xsd:enumeration value="Custom process"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="exposureModeType">
+    <xsd:simpleContent>
+      <xsd:extension base="exposureMode_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="exposureMode_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Auto exposure"/>
+      <xsd:enumeration value="Manual exposure"/>
+      <xsd:enumeration value="Auto bracket"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="whiteBalanceType">
+    <xsd:simpleContent>
+      <xsd:extension base="whiteBalance_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="whiteBalance_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Auto"/>
+      <xsd:enumeration value="Manual"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="sceneCaptureType">
+    <xsd:simpleContent>
+      <xsd:extension base="sceneCapture_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="sceneCapture_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Standard"/>
+      <xsd:enumeration value="Landscape"/>
+      <xsd:enumeration value="Portrait"/>
+      <xsd:enumeration value="Night scene"/>
+      <xsd:enumeration value=""/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="gainControlType">
+    <xsd:simpleContent>
+      <xsd:extension base="gainControl_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="gainControl_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="None"/>
+      <xsd:enumeration value="Low gain up"/>
+      <xsd:enumeration value="High gain up"/>
+      <xsd:enumeration value="Low gain down"/>
+      <xsd:enumeration value="High gain down"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="contrastType">
+    <xsd:simpleContent>
+      <xsd:extension base="contrast_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="contrast_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Normal"/>
+      <xsd:enumeration value="Soft"/>
+      <xsd:enumeration value="Hard"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="saturationType">
+    <xsd:simpleContent>
+      <xsd:extension base="saturation_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="saturation_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Normal"/>
+      <xsd:enumeration value="Low saturation"/>
+      <xsd:enumeration value="High saturation"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="sharpnessType">
+    <xsd:simpleContent>
+      <xsd:extension base="contrast_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="subjectDistanceRangeType">
+    <xsd:simpleContent>
+      <xsd:extension base="subjectDistanceRange_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="subjectDistanceRange_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="unknown"/>
+      <xsd:enumeration value="Macro"/>
+      <xsd:enumeration value="Close view"/>
+      <xsd:enumeration value="Distant view"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="uuidType">
+    <xsd:simpleContent>
+      <xsd:extension base="uuid_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="uuid_t">
+    <xsd:restriction base="xsd:hexBinary">
+      <xsd:pattern value=".{8}-.{4}-.{4}-.{4}-.{12}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <!-- 
+       TYPES FOR THE GPS IFD 
+   -->
+  <xsd:complexType name="gpsLatitudeRefType">
+    <xsd:simpleContent>
+      <xsd:extension base="gpsLatitudeRef_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="gpsLatitudeRef_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="North latitude"/>
+      <xsd:enumeration value="South latitude"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="gpsAltitudeRefType">
+    <xsd:simpleContent>
+      <xsd:extension base="gpsAltitudeRef_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="gpsAltitudeRef_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Sea level"/>
+      <xsd:enumeration value="Sea level reference"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="gpsLatitudeType">
+    <xsd:simpleContent>
+      <xsd:extension base="gpsLatitude_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="gpsLatitude_t">
+    <xsd:restriction base="xsd:float">
+      <xsd:minInclusive value="0.0"/>
+      <xsd:maxInclusive value="90.0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="gpsLongitudeRefType">
+    <xsd:simpleContent>
+      <xsd:extension base="gpsLongitudeRef_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="gpsLongitudeRef_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="East longitude"/>
+      <xsd:enumeration value="West longitude"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="gpsLongitudeType">
+    <xsd:simpleContent>
+      <xsd:extension base="gpsLongitude_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="gpsLongitude_t">
+    <xsd:restriction base="xsd:float">
+      <xsd:minInclusive value="0.0"/>
+      <xsd:maxInclusive value="180.0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="gpsBearingType">
+    <xsd:simpleContent>
+      <xsd:extension base="gpsBearing_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="gpsBearing_t">
+    <xsd:restriction base="xsd:float">
+      <xsd:minInclusive value="0.0"/>
+      <xsd:maxExclusive value="360.0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="gpsStatusType">
+    <xsd:simpleContent>
+      <xsd:extension base="gpsStatus_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="gpsStatus_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Measurement in progress"/>
+      <xsd:enumeration value="Measurement interoperability"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="gpsMeasureModeType">
+    <xsd:simpleContent>
+      <xsd:extension base="gpsMeasureMode_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="gpsMeasureMode_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="2-dimensional measurement"/>
+      <xsd:enumeration value="3-dimensional measurement"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="gpsSpeedRefType">
+    <xsd:simpleContent>
+      <xsd:extension base="gpsSpeedRef_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="gpsSpeedRef_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Kilometers per hour"/>
+      <xsd:enumeration value="Miles per hour"/>
+      <xsd:enumeration value="Knots"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="gpsDirectionType">
+    <xsd:simpleContent>
+      <xsd:extension base="gpsDirection_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="gpsDirection_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="True direction"/>
+      <xsd:enumeration value="Magnetic direction"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="gpsDistanceRefType">
+    <xsd:simpleContent>
+      <xsd:extension base="gpsDistanceRef_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="gpsDistanceRef_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Kilometers"/>
+      <xsd:enumeration value="Miles"/>
+      <xsd:enumeration value="Knots"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complexType name="gpsDifferentialType">
+    <xsd:simpleContent>
+      <xsd:extension base="gpsDifferential_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="gpsDifferential_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Measurement without differential correction"/>
+      <xsd:enumeration value="Differential correction applied"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <!-- 
+       TYPES FOR THE INTEROPERABILTY IFD
+     -->
+  <xsd:complexType name="interoperabilityType">
+    <xsd:simpleContent>
+      <xsd:extension base="interoperability_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="interoperability_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="R98"/>
+      <xsd:enumeration value="THM"/>
+      <xsd:enumeration value="R03"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+ 
+  <!-- GENERIC TYPE
+ 
+        A generic type to hold any type of tag data. 
+        Defines a name, value, datatype triplet 
+        Datatype values refer to types as defined by XML Schema.
+ 
+        singleFieldType is for EXIF tag that define a single 
+        value, the common case.
+ 
+        repeatedFieldTyp is for the uncommon case where many
+        data items are defined in an EXIF tag.
+ 
+    -->
+  <xsd:complexType name="singleFieldType">
+    <xsd:complexContent>
+      <xsd:extension base="singleField_t">
+        <xsd:attributeGroup ref="exifAttrs"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+    
+  <xsd:complexType name="repeatedFieldType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="1" name="Field" type="singleField_t"/>
+    </xsd:sequence>
+    <xsd:attributeGroup ref="exifAttrs"/>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="singleField_t">
+    <xsd:sequence>
+      <xsd:element name="Name" type="xsd:string"/>
+      <xsd:element name="Value" type="xsd:string"/>
+      <xsd:element name="Datatype">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>The enumerated datatype values refer to types 
+                defined by XML Schema
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="string"/>
+            <xsd:enumeration value="integer"/>
+            <xsd:enumeration value="float"/>
+            <xsd:enumeration value="date"/>
+            <xsd:enumeration value="time"/>
+            <xsd:enumeration value="dateTime"/>
+            <xsd:enumeration value="hexBinary"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+ 
+  <!-- END TYPE DEFINITIONS -->
+ 
+  <!-- 
+       THE GLOBAL ELEMENT
+    -->
+  <xsd:element name="exifMetadata">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="TiffIfd">
+          <xsd:annotation>
+            <xsd:documentation>Tags from the TIFF IFD</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:all>
+ 
+              <!-- Tags relating to image data structure -->
+              <xsd:element minOccurs="0" name="ImageWidth" type="positiveIntegerType"/>
+              <xsd:element minOccurs="0" name="ImageLength" type="positiveIntegerType"/>
+              <xsd:element minOccurs="0" name="BitsPerSample" type="bitsPerSampleType"/>
+              <xsd:element minOccurs="0" name="Compression" type="compressionType"/>
+              <xsd:element minOccurs="0" name="PhotometricInterpretation" type="photometricInterpretationType"/>
+              <xsd:element minOccurs="0" name="Orientation" type="orientationType"/>
+              <xsd:element minOccurs="0" name="SamplesPerPixel" type="positiveIntegerType"/>
+              <xsd:element minOccurs="0" name="PlanarConfiguration" type="planarConfigurationType"/>
+              <xsd:element minOccurs="0" name="YCbCrSubSampling" type="yCbCrSubSamplingType"/>
+              <xsd:element minOccurs="0" name="YCbCrPositioning" type="yCbCrPositioningType"/>
+              <xsd:element minOccurs="0" name="XResolution" type="nonNegativeRealType">
+                <xsd:annotation>
+                  <xsd:documentation>Unit is pixels per ResolutionUnit</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="YResolution" type="nonNegativeRealType">
+                <xsd:annotation>
+                  <xsd:documentation>Unit is pixels per Resolution Unit</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="ResolutionUnit" type="resolutionType"/>
+ 
+              <!--Tags relating to recording offset -->
+              <xsd:element minOccurs="0" name="StripOffsets" type="stripOffsetsType"/>
+              <xsd:element minOccurs="0" name="RowsPerStrip" type="positiveIntegerType"/>
+              <xsd:element minOccurs="0" name="StripByteCounts" type="stripByteCountsType"/>
+              <xsd:element minOccurs="0" name="JPEGInterChangeFormat" type="positiveIntegerType"/>
+              <xsd:element minOccurs="0" name="JPEGInterChangeFormatLength" type="positiveIntegerType"/>
+ 
+              <!-- Tags relating to image data characteristics -->
+              <xsd:element minOccurs="0" name="TransferFunction" type="xsd:anyType"/>
+              <xsd:element minOccurs="0" name="WhitePoint" type="whitePointType"/>
+              <xsd:element minOccurs="0" name="PrimaryChromaticities" type="primaryChromaticitiesType"/>
+              <xsd:element minOccurs="0" name="YCbCrCoefficients" type="yCbCrCoefficientsType"/>
+              <xsd:element minOccurs="0" name="ReferenceBlackWhite" type="primaryChromaticitiesType"/>
+ 
+              <!--Other tags -->
+              <xsd:element minOccurs="0" name="DateTime" type="dateTimeType"/>
+              <xsd:element minOccurs="0" name="ImageDescription" type="stringType"/>
+              <xsd:element minOccurs="0" name="Make" type="stringType"/>
+              <xsd:element minOccurs="0" name="Model" type="stringType"/>
+              <xsd:element minOccurs="0" name="Software" type="stringType"/>
+              <xsd:element minOccurs="0" name="Artist" type="stringType"/>
+              <xsd:element minOccurs="0" name="Copyright" type="stringType"/>
+ 
+              <!-- Placeholder tags for future tags that may be defined -->
+              <xsd:element minOccurs="0" name="TiffField1" type="singleFieldType"/>
+              <xsd:element minOccurs="0" name="TiffField2" type="singleFieldType"/>
+              <xsd:element minOccurs="0" name="TiffField3" type="repeatedFieldType"/>
+ 
+            </xsd:all>
+          </xsd:complexType>
+        </xsd:element>
+ 
+        <xsd:element name="ExifIfd">
+          <xsd:annotation>
+            <xsd:documentation>Tags from the EXIF IFD</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:all>
+ 
+              <!-- Tags releating to version -->
+              <xsd:element minOccurs="0" name="ExifVersion" type="stringType"/>
+              <xsd:element minOccurs="0" name="FlashpixVersion" type="stringType"/>
+ 
+              <!-- Tags relating to image data characteristics -->
+              <xsd:element minOccurs="0" name="ColorSpace" type="colorSpaceType"/>
+ 
+              <!-- Tags relating to image configuration -->
+              <xsd:element minOccurs="0" name="ComponentsConfiguration" type="stringType"/>
+              <xsd:element minOccurs="0" name="CompressedBitsPerPixel" type="nonNegativeRealType"/>
+              <xsd:element minOccurs="0" name="PixelXDimension" type="nonNegativeIntegerType"/>
+              <xsd:element minOccurs="0" name="PixelYDimension" type="nonNegativeIntegerType"/>
+ 
+              <!-- Tags relating to user information -->
+              <xsd:element minOccurs="0" name="MakerNote" type="repeatedFieldType"/>
+              <xsd:element minOccurs="0" name="UserComment" type="stringType"/>
+ 
+              <!-- Tag relating to related file information -->
+              <xsd:element minOccurs="0" name="RelatedSoundFile" type="stringType"/>
+ 
+              <!-- Tags relating to date and time -->
+              <xsd:element minOccurs="0" name="DateTimeOriginal" type="dateTimeType"/>
+              <xsd:element minOccurs="0" name="DateTimeDigitized" type="dateTimeType"/>
+              <xsd:element minOccurs="0" name="SubSecTime" type="nonNegativeIntegerType"/>
+              <xsd:element minOccurs="0" name="SubSecTimeOriginal" type="nonNegativeIntegerType"/>
+              <xsd:element minOccurs="0" name="SubSecTimeDigitized" type="nonNegativeIntegerType"/>
+ 
+              <!-- Tags relating to picture taking conditions -->
+              <xsd:element minOccurs="0" name="ExposureTime" type="nonNegativeRealType">
+                <xsd:annotation>
+                  <xsd:documentation>Units is seconds</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="FNumber" type="nonNegativeRealType"/>
+              <xsd:element minOccurs="0" name="ExposureProgram" type="exposureProgramType"/>
+              <xsd:element minOccurs="0" name="SpectralSensitivity" type="stringType"/>
+              <xsd:element minOccurs="0" name="ISOSpeedRatings" type="nonNegativeIntegerType"/>
+              <xsd:element minOccurs="0" name="OECF" type="repeatedFieldType"/>
+              <xsd:element minOccurs="0" name="ShutterSpeedValue" type="realType">
+                <xsd:annotation>
+                  <xsd:documentation>The unit is the APEX Value</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="ApertureValue" type="nonNegativeRealType">
+                <xsd:annotation>
+                  <xsd:documentation>The  unit is the APEX value</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="BrightnessValue" type="realType">
+                <xsd:annotation>
+                  <xsd:documentation>The unit is the APEX value</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="ExposureBiasValue" type="realType">
+                <xsd:annotation>
+                  <xsd:documentation>The unit is the APEX value</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="MaxApertureValue" type="nonNegativeRealType">
+                <xsd:annotation>
+                  <xsd:documentation>The unit is the APEX value</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="SubjectDistance" type="stringType">
+                <xsd:annotation>
+                  <xsd:documentation>The unit is meters</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="MeteringMode" type="meteringModeType"/>
+              <xsd:element minOccurs="0" name="LightSource" type="lightSourceType"/>
+              <xsd:element minOccurs="0" name="Flash" type="flashType"/>
+              <xsd:element minOccurs="0" name="FocalLength" type="nonNegativeRealType">
+                <xsd:annotation>
+                  <xsd:documentation>The unit is millimeters.</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="SubjectArea" type="subjectAreaType"/>
+              <xsd:element minOccurs="0" name="FlashEnergy" type="nonNegativeRealType">
+                <xsd:annotation>
+                  <xsd:documentation>The unit is Beam Candle Power Seconds</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="SpatialFrequencyResponse" type="repeatedFieldType">
+                <xsd:annotation>
+                  <xsd:documentation>Not implemented</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="FocalPlaneXResolution" type="nonNegativeRealType">
+                <xsd:annotation>
+                  <xsd:documentation>The unit is pixels</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="FocalPlaneYResolution" type="nonNegativeRealType">
+                <xsd:annotation>
+                  <xsd:documentation>The unit is pixels</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="FocalPlaneResolutionUnit" type="resolutionType"/>
+              <xsd:element minOccurs="0" name="SubjectLocation" type="subjectLocationType"/>
+              <xsd:element minOccurs="0" name="ExposureIndex" type="nonNegativeRealType"/>
+              <xsd:element minOccurs="0" name="SensingMethod" type="sensingMethodType"/>
+              <xsd:element minOccurs="0" name="FileSource" type="fileSourceType"/>
+              <xsd:element minOccurs="0" name="SceneType" type="stringType"/>
+              <xsd:element minOccurs="0" name="CFAPattern" type="repeatedFieldType"/>
+              <xsd:element minOccurs="0" name="CustomRendered" type="customRenderedType"/>
+              <xsd:element minOccurs="0" name="ExposureMode" type="exposureModeType"/>
+              <xsd:element minOccurs="0" name="WhiteBalance" type="whiteBalanceType"/>
+              <xsd:element minOccurs="0" name="DigitalZoomRatio" type="nonNegativeRealType"/>
+              <xsd:element minOccurs="0" name="FocalLengthIn35mmFilm" type="positiveIntegerType"/>
+              <xsd:element minOccurs="0" name="SceneCaptureType" type="sceneCaptureType"/>
+              <xsd:element minOccurs="0" name="GainControl" type="gainControlType"/>
+              <xsd:element minOccurs="0" name="Contrast" type="contrastType"/>
+              <xsd:element minOccurs="0" name="Saturation" type="saturationType"/>
+              <xsd:element minOccurs="0" name="Sharpness" type="sharpnessType"/>
+              <xsd:element minOccurs="0" name="DeviceSettingDescription" type="repeatedFieldType"/>
+              <xsd:element minOccurs="0" name="SubjectDistanceRange" type="subjectDistanceRangeType"/>
+              <xsd:element minOccurs="0" name="ImageUniqueID" type="uuidType"/>
+              <xsd:element minOccurs="0" name="Gamma" type="nonNegativeRealType"/>
+ 
+              <!-- Placeholder tags for future tags that may be defined -->
+              <xsd:element minOccurs="0" name="ExifField1" type="singleFieldType"/>
+              <xsd:element minOccurs="0" name="ExifField2" type="singleFieldType"/>
+              <xsd:element minOccurs="0" name="ExifField3" type="repeatedFieldType"/>
+ 
+            </xsd:all>
+            <xsd:attributeGroup ref="exifAttrs"/>
+          </xsd:complexType>
+        </xsd:element>
+ 
+        <xsd:element minOccurs="0" name="GpsIfd">
+          <xsd:annotation>
+            <xsd:documentation>Tags from the GPS IFD</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:all>
+              <xsd:element name="GPSVersionID" type="stringType"/>
+              <xsd:element minOccurs="0" name="GPSLatitudeRef" type="gpsLatitudeRefType"/>
+              <xsd:element minOccurs="0" name="GPSLatitude" type="gpsLatitudeType">
+                <xsd:annotation>
+                  <xsd:documentation>Unit is decimal degrees</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="GPSLongitudeRef" type="gpsLongitudeRefType"/>
+              <xsd:element minOccurs="0" name="GPSLongitude" type="gpsLongitudeType">
+                <xsd:annotation>
+                  <xsd:documentation>Unit is decimal degrees</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="GPSAltitudeRef" type="gpsAltitudeRefType"/>
+              <xsd:element minOccurs="0" name="GPSAltitude" type="nonNegativeRealType">
+                <xsd:annotation>
+                  <xsd:documentation>Unit is meters</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" name="GPSTimeStamp" type="timeType"/>
+              <xsd:element minOccurs="0" name="GPSSatellites" type="stringType"/>
+              <xsd:element minOccurs="0" name="GPSStatus" type="gpsStatusType"/>
+              <xsd:element minOccurs="0" name="GPSMeasureMode" type="gpsMeasureModeType"/>
+              <xsd:element minOccurs="0" name="GPSDOP" type="nonNegativeRealType"/>
+              <xsd:element minOccurs="0" name="GPSSpeedRef" type="gpsSpeedRefType"/>
+              <xsd:element minOccurs="0" name="GPSSpeed" type="nonNegativeRealType"/>
+              <xsd:element minOccurs="0" name="GPSTrackRef" type="gpsDirectionType"/>
+              <xsd:element minOccurs="0" name="GPSTrack" type="gpsBearingType"/>
+              <xsd:element minOccurs="0" name="GPSImgDirectionRef" type="gpsDirectionType"/>
+              <xsd:element minOccurs="0" name="GPSImgDirection" type="gpsBearingType"/>
+              <xsd:element minOccurs="0" name="GPSMapDatum" type="stringType"/>
+              <xsd:element minOccurs="0" name="GPSDestLatitudeRef" type="gpsLatitudeRefType"/>
+              <xsd:element minOccurs="0" name="GPSDestLatitude" type="gpsLatitudeType"/>
+              <xsd:element minOccurs="0" name="GPSDestLongitudeRef" type="gpsLongitudeRefType"/>
+              <xsd:element minOccurs="0" name="GPSDestLongitude" type="gpsLongitudeType"/>
+              <xsd:element minOccurs="0" name="GPSDestBearingRef" type="gpsDirectionType"/>
+              <xsd:element minOccurs="0" name="GPSDestBearing" type="gpsBearingType"/>
+              <xsd:element minOccurs="0" name="GPSDestDistanceRef" type="gpsDistanceRefType"/>
+              <xsd:element minOccurs="0" name="GPSDestDistance" type="nonNegativeRealType"/>
+              <xsd:element minOccurs="0" name="GPSProcessingMethod" type="stringType"/>
+              <xsd:element minOccurs="0" name="GPSAreaInformation" type="stringType"/>
+              <xsd:element minOccurs="0" name="GPSDateStamp" type="dateType"/>
+              <xsd:element minOccurs="0" name="GPSDifferential" type="gpsDifferentialType"/>
+ 
+              <!-- Placeholder tags for future tags that may be defined -->
+              <xsd:element minOccurs="0" name="GPSField1" type="singleFieldType"/>
+              <xsd:element minOccurs="0" name="GPSField2" type="singleFieldType"/>
+              <xsd:element minOccurs="0" name="GPSField3" type="repeatedFieldType"/>
+            </xsd:all>
+            <xsd:attributeGroup ref="exifAttrs"/>
+          </xsd:complexType>
+        </xsd:element>
+ 
+        <xsd:element minOccurs="0" name="InteroperabilityIfd">
+          <xsd:annotation>
+            <xsd:documentation>Tags from the Interoperability IFD</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:all>
+              <xsd:element minOccurs="0" name="InteroperabilityIndex" type="interoperabilityType"/>
+            </xsd:all>
+            <xsd:attributeGroup ref="exifAttrs"/>
+          </xsd:complexType>
+        </xsd:element>
+ 
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
