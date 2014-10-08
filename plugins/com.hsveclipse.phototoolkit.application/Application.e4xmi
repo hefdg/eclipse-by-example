@@ -21,6 +21,7 @@
         <children xsi:type="menu:HandledMenuItem" xmi:id="_7LA64k6aEeSnavDJxdeVQw" label="About" command="_7LAT2E6aEeSnavDJxdeVQw"/>
       </children>
     </mainMenu>
+    <sharedElements xsi:type="basic:Part" xmi:id="_kXPpIE6PEeSaIuMhtBc8RQ" elementId="phototoolkit.shared.part.photoeditorpart" contributionURI="bundleclass://com.hsveclipse.phototoolkit.application/com.hsveclipse.phototoolkit.application.parts.PhotoEditorPart" label="Photo Editor"/>
   </children>
   <handlers xmi:id="_7K_szE6aEeSnavDJxdeVQw" elementId="test.handler.quitCommand" contributionURI="bundleclass://com.hsveclipse.phototoolkit.application/com.hsveclipse.phototoolkit.application.handlers.QuitHandler" command="_7K_sy06aEeSnavDJxdeVQw"/>
   <handlers xmi:id="_7LAT006aEeSnavDJxdeVQw" elementId="test.handler.openCommand" contributionURI="bundleclass://com.hsveclipse.phototoolkit.application/com.hsveclipse.phototoolkit.application.handlers.OpenHandler" command="_7LAT0k6aEeSnavDJxdeVQw"/>
