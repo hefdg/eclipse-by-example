@@ -20,10 +20,10 @@
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated exif -->
+      <!-- @generated phototoolkit -->
       <factory
             uri="http://xmlns.oracle.com/ord/meta/exif"
-            class="com.oracle.xmlns.ord.meta.exif.provider.ExifItemProviderAdapterFactory"
+            class="com.hsveclipse.phototoolkit.exif.provider.ExifItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

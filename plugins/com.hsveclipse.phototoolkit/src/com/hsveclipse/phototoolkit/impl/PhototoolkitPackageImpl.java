@@ -2,19 +2,22 @@
  */
 package com.hsveclipse.phototoolkit.impl;
 
-import com.hsveclipse.phototoolkit.Gallery;
-import com.hsveclipse.phototoolkit.Photo;
 import com.hsveclipse.phototoolkit.PhototoolkitFactory;
 import com.hsveclipse.phototoolkit.PhototoolkitPackage;
-
-import com.oracle.xmlns.ord.meta.exif.ExifPackage;
-
+import com.hsveclipse.phototoolkit.exif.ExifPackage;
+import com.hsveclipse.phototoolkit.exif.impl.ExifPackageImpl;
+import java.io.IOException;
+import java.net.URL;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +26,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class PhototoolkitPackageImpl extends EPackageImpl implements PhototoolkitPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected String packageFilename = "phototoolkit.ecore";
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -71,8 +81,6 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
-	 * @see #createPackageContents()
-	 * @see #initializePackageContents()
 	 * @generated
 	 */
 	public static PhototoolkitPackage init() {
@@ -83,14 +91,15 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 
 		isInited = true;
 
-		// Initialize simple dependencies
-		ExifPackage.eINSTANCE.eClass();
+		// Obtain or create and register interdependencies
+		ExifPackageImpl theExifPackage = (ExifPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ExifPackage.eNS_URI) instanceof ExifPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ExifPackage.eNS_URI) : ExifPackage.eINSTANCE);
 
-		// Create package meta-data objects
-		thePhototoolkitPackage.createPackageContents();
+		// Load packages
+		thePhototoolkitPackage.loadPackage();
 
-		// Initialize created meta-data
-		thePhototoolkitPackage.initializePackageContents();
+		// Fix loaded packages
+		thePhototoolkitPackage.fixPackageContents();
+		theExifPackage.fixPackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		thePhototoolkitPackage.freeze();
@@ -107,6 +116,9 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * @generated
 	 */
 	public EClass getPhoto() {
+		if (photoEClass == null) {
+			photoEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(PhototoolkitPackage.eNS_URI).getEClassifiers().get(0);
+		}
 		return photoEClass;
 	}
 
@@ -116,7 +128,7 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * @generated
 	 */
 	public EAttribute getPhoto_ID() {
-		return (EAttribute)photoEClass.getEStructuralFeatures().get(0);
+        return (EAttribute)getPhoto().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -125,7 +137,7 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * @generated
 	 */
 	public EAttribute getPhoto_Name() {
-		return (EAttribute)photoEClass.getEStructuralFeatures().get(1);
+        return (EAttribute)getPhoto().getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -134,7 +146,7 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * @generated
 	 */
 	public EAttribute getPhoto_Tags() {
-		return (EAttribute)photoEClass.getEStructuralFeatures().get(2);
+        return (EAttribute)getPhoto().getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -143,7 +155,7 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * @generated
 	 */
 	public EAttribute getPhoto_Uri() {
-		return (EAttribute)photoEClass.getEStructuralFeatures().get(3);
+        return (EAttribute)getPhoto().getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -152,7 +164,7 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * @generated
 	 */
 	public EReference getPhoto_Exif() {
-		return (EReference)photoEClass.getEStructuralFeatures().get(4);
+        return (EReference)getPhoto().getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -161,6 +173,9 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * @generated
 	 */
 	public EClass getGallery() {
+		if (galleryEClass == null) {
+			galleryEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(PhototoolkitPackage.eNS_URI).getEClassifiers().get(1);
+		}
 		return galleryEClass;
 	}
 
@@ -170,7 +185,7 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * @generated
 	 */
 	public EAttribute getGallery_Name() {
-		return (EAttribute)galleryEClass.getEStructuralFeatures().get(0);
+        return (EAttribute)getGallery().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -179,7 +194,7 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * @generated
 	 */
 	public EAttribute getGallery_Url() {
-		return (EAttribute)galleryEClass.getEStructuralFeatures().get(1);
+        return (EAttribute)getGallery().getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -188,7 +203,7 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * @generated
 	 */
 	public EAttribute getGallery_Description() {
-		return (EAttribute)galleryEClass.getEStructuralFeatures().get(2);
+        return (EAttribute)getGallery().getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -197,7 +212,7 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * @generated
 	 */
 	public EReference getGallery_Photos() {
-		return (EReference)galleryEClass.getEStructuralFeatures().get(3);
+        return (EReference)getGallery().getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -214,32 +229,32 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private boolean isCreated = false;
+	private boolean isLoaded = false;
 
 	/**
-	 * Creates the meta-model objects for the package.  This method is
-	 * guarded to have no affect on any invocation but its first.
+	 * Laods the package and any sub-packages from their serialized form.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void createPackageContents() {
-		if (isCreated) return;
-		isCreated = true;
+	public void loadPackage() {
+		if (isLoaded) return;
+		isLoaded = true;
 
-		// Create classes and their features
-		photoEClass = createEClass(PHOTO);
-		createEAttribute(photoEClass, PHOTO__ID);
-		createEAttribute(photoEClass, PHOTO__NAME);
-		createEAttribute(photoEClass, PHOTO__TAGS);
-		createEAttribute(photoEClass, PHOTO__URI);
-		createEReference(photoEClass, PHOTO__EXIF);
-
-		galleryEClass = createEClass(GALLERY);
-		createEAttribute(galleryEClass, GALLERY__NAME);
-		createEAttribute(galleryEClass, GALLERY__URL);
-		createEAttribute(galleryEClass, GALLERY__DESCRIPTION);
-		createEReference(galleryEClass, GALLERY__PHOTOS);
+		URL url = getClass().getResource(packageFilename);
+		if (url == null) {
+			throw new RuntimeException("Missing serialized package: " + packageFilename);
+		}
+		URI uri = URI.createURI(url.toString());
+		Resource resource = new EcoreResourceFactoryImpl().createResource(uri);
+		try {
+			resource.load(null);
+		}
+		catch (IOException exception) {
+			throw new WrappedException(exception);
+		}
+		initializeFromLoadedEPackage(this, (EPackage)resource.getContents().get(0));
+		createResource(eNS_URI);
 	}
 
 	/**
@@ -247,49 +262,32 @@ public class PhototoolkitPackageImpl extends EPackageImpl implements Phototoolki
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private boolean isInitialized = false;
+	private boolean isFixed = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
+	 * Fixes up the loaded package, to make it appear as if it had been programmatically built.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void initializePackageContents() {
-		if (isInitialized) return;
-		isInitialized = true;
+	public void fixPackageContents() {
+		if (isFixed) return;
+		isFixed = true;
+		fixEClassifiers();
+	}
 
-		// Initialize package
-		setName(eNAME);
-		setNsPrefix(eNS_PREFIX);
-		setNsURI(eNS_URI);
-
-		// Obtain other dependent packages
-		ExifPackage theExifPackage = (ExifPackage)EPackage.Registry.INSTANCE.getEPackage(ExifPackage.eNS_URI);
-
-		// Create type parameters
-
-		// Set bounds for type parameters
-
-		// Add supertypes to classes
-
-		// Initialize classes, features, and operations; add parameters
-		initEClass(photoEClass, Photo.class, "Photo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPhoto_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Photo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPhoto_Name(), ecorePackage.getEString(), "name", null, 0, 1, Photo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPhoto_Tags(), ecorePackage.getEString(), "tags", null, 0, -1, Photo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPhoto_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, Photo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPhoto_Exif(), theExifPackage.getExifMetadataType(), null, "exif", null, 0, 1, Photo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(galleryEClass, Gallery.class, "Gallery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGallery_Name(), ecorePackage.getEString(), "name", null, 0, 1, Gallery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGallery_Url(), ecorePackage.getEString(), "url", null, 0, 1, Gallery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGallery_Description(), ecorePackage.getEString(), "description", null, 0, 1, Gallery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGallery_Photos(), this.getPhoto(), null, "photos", null, 0, -1, Gallery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		// Create resource
-		createResource(eNS_URI);
+	/**
+	 * Sets the instance class on the given classifier.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected void fixInstanceClass(EClassifier eClassifier) {
+		if (eClassifier.getInstanceClassName() == null) {
+			eClassifier.setInstanceClassName("com.hsveclipse.phototoolkit." + eClassifier.getName());
+			setGeneratedClassName(eClassifier);
+		}
 	}
 
 } //PhototoolkitPackageImpl

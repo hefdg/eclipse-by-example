@@ -2,6 +2,7 @@
  */
 package com.hsveclipse.phototoolkit.tests;
 
+import com.hsveclipse.phototoolkit.exif.tests.ExifTests;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -31,6 +32,7 @@ public class PhototoolkitAllTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new PhototoolkitAllTests("Phototoolkit Tests");
+		suite.addTest(ExifTests.suite());
 		return suite;
 	}
 

@@ -127,7 +127,7 @@ public class GalleryItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Gallery_description_feature", "_UI_Gallery_type"),
 				 PhototoolkitPackage.Literals.GALLERY__DESCRIPTION,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,

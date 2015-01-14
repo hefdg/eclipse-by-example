@@ -2,10 +2,8 @@
  */
 package com.hsveclipse.phototoolkit;
 
-import com.oracle.xmlns.ord.meta.exif.ExifMetadataType;
-
+import com.hsveclipse.phototoolkit.exif.ExifMetadataType;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

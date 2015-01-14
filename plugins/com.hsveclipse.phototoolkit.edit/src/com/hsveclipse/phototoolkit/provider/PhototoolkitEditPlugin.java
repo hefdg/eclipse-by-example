@@ -2,10 +2,7 @@
  */
 package com.hsveclipse.phototoolkit.provider;
 
-import com.oracle.xmlns.ord.meta.exif.provider.ExifEditPlugin;
-
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
@@ -40,7 +37,6 @@ public final class PhototoolkitEditPlugin extends EMFPlugin {
 	public PhototoolkitEditPlugin() {
 		super
 		  (new ResourceLocator [] {
-		     ExifEditPlugin.INSTANCE,
 		   });
 	}
 

@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.hsveclipse.phototoolkit/src" modelPluginID="com.hsveclipse.phototoolkit"
     modelName="Phototoolkit" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
-    usedGenPackages="exif.genmodel#//exif" operationReflection="true" importOrganizing="true">
+    operationReflection="true" importOrganizing="true">
   <foreignModel>phototoolkit.ecore</foreignModel>
   <genPackages prefix="Phototoolkit" basePackage="com.hsveclipse" resource="XML" disposableProviderFactory="true"
       ecorePackage="phototoolkit.ecore#/">
@@ -17,8 +17,662 @@
     <genClasses ecoreClass="phototoolkit.ecore#//Gallery">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//Gallery/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//Gallery/url"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//Gallery/description"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//Gallery/description"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//Gallery/photos"/>
     </genClasses>
+    <nestedGenPackages prefix="Exif" basePackage="com.hsveclipse.phototoolkit" resource="XML"
+        disposableProviderFactory="true" loadInitialization="true" literalsInterface="false"
+        ecorePackage="phototoolkit.ecore#//exif">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/BitsPerSampleT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/BitsPerSampleT/_888"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/ColorSpaceT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ColorSpaceT/sRGB"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ColorSpaceT/Uncalibrated"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/CompressionT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/CompressionT/uncompressed"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/CompressionT/JPEG"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/ContrastT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ContrastT/Normal"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ContrastT/Soft"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ContrastT/Hard"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/CustomRenderedT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/CustomRenderedT/NormalProcess"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/CustomRenderedT/CustomProcess"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/DatatypeType">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/DatatypeType/string"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/DatatypeType/integer"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/DatatypeType/float"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/DatatypeType/date"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/DatatypeType/time"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/DatatypeType/dateTime"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/DatatypeType/hexBinary"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/ExposureModeT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ExposureModeT/AutoExposure"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ExposureModeT/ManualExposure"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ExposureModeT/AutoBracket"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/ExposureProgramT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ExposureProgramT/NotDefined"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ExposureProgramT/Manual"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ExposureProgramT/NormalProgram"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ExposureProgramT/AperturePriority"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ExposureProgramT/ShutterPriority"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ExposureProgramT/CreativeProgram"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ExposureProgramT/ActionProgram"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ExposureProgramT/PortraitMode"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ExposureProgramT/LandscapeMode"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/FileSourceT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/FileSourceT/others"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/FileSourceT/scannerOfTransparentType"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/FileSourceT/scannerOfReflexType"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/FileSourceT/DSC"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/FlashModeT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/FlashModeT/unknown"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/FlashModeT/CompulsoryFiring"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/FlashModeT/CompulsorySuppression"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/FlashModeT/Auto"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/FlashReturnT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/FlashReturnT/NoStrobeReturnFunction"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/FlashReturnT/StrobeReturnNotDetected"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/FlashReturnT/StrobeReturnDetected"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/GainControlT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GainControlT/None"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GainControlT/LowGainUp"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GainControlT/HighGainUp"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GainControlT/LowGainDown"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GainControlT/HighGainDown"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/GpsAltitudeRefT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsAltitudeRefT/SeaLevel"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsAltitudeRefT/SeaLevelReference"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/GpsDifferentialT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsDifferentialT/MeasurementWithoutDifferentialCorrection"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsDifferentialT/DifferentialCorrectionApplied"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/GpsDirectionT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsDirectionT/TrueDirection"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsDirectionT/MagneticDirection"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/GpsDistanceRefT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsDistanceRefT/Kilometers"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsDistanceRefT/Miles"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsDistanceRefT/Knots"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/GpsLatitudeRefT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsLatitudeRefT/NorthLatitude"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsLatitudeRefT/SouthLatitude"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/GpsLongitudeRefT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsLongitudeRefT/EastLongitude"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsLongitudeRefT/WestLongitude"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/GpsMeasureModeT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsMeasureModeT/_2DimensionalMeasurement"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsMeasureModeT/_3DimensionalMeasurement"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/GpsSpeedRefT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsSpeedRefT/KilometersPerHour"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsSpeedRefT/MilesPerHour"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsSpeedRefT/Knots"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/GpsStatusT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsStatusT/MeasurementInProgress"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/GpsStatusT/MeasurementInteroperability"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/InteroperabilityT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/InteroperabilityT/R98"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/InteroperabilityT/THM"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/InteroperabilityT/R03"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/LightSourceT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/unknown"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/Daylight"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/Fluorescent"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/Tungsten"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/Flash"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/FineWeather"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/CloudyWeather"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/Shade"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/DaylightFluorescent"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/DayWhiteFluorescent"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/CoolWhiteFluorescent"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/StandardLightA"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/StandardLightB"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/StandardLightC"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/D55"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/D65"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/D75"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/D50"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/ISOStudioTungsten"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/LightSourceT/otherLightSource"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/MeteringModeT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/MeteringModeT/unknown"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/MeteringModeT/Average"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/MeteringModeT/CenterWeightedAverage"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/MeteringModeT/Spot"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/MeteringModeT/MultiSpot"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/MeteringModeT/Pattern"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/MeteringModeT/Partial"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/MeteringModeT/other"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/OrientationT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/OrientationT/topLeft"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/OrientationT/topRight"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/OrientationT/bottomRight"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/OrientationT/bottomLeft"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/OrientationT/leftTop"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/OrientationT/rightTop"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/OrientationT/rightBottom"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/OrientationT/leftBottom"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/PhotometricInterpretationT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/PhotometricInterpretationT/RGB"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/PhotometricInterpretationT/YCbCr"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/PlanarConfigurationT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/PlanarConfigurationT/chunky"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/PlanarConfigurationT/planar"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/ResolutionT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ResolutionT/inches"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/ResolutionT/centimeters"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/SaturationT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SaturationT/Normal"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SaturationT/LowSaturation"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SaturationT/HighSaturation"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/SceneCaptureT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SceneCaptureT/Standard"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SceneCaptureT/Landscape"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SceneCaptureT/Portrait"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SceneCaptureT/NightScene"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SceneCaptureT/_"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/SensingMethodT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SensingMethodT/NotDefined"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SensingMethodT/OneChipColorArea"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SensingMethodT/TwoChipColorArea"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SensingMethodT/ThreeChipColorArea"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SensingMethodT/ColorSequentialArea"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SensingMethodT/Trilinear"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SensingMethodT/ColorSequentialLinear"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/SubjectDistanceRangeT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SubjectDistanceRangeT/unknown"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SubjectDistanceRangeT/Macro"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SubjectDistanceRangeT/CloseView"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/SubjectDistanceRangeT/DistantView"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/WhiteBalanceT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/WhiteBalanceT/Auto"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/WhiteBalanceT/Manual"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/YCbCrPositioningT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/YCbCrPositioningT/centered"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/YCbCrPositioningT/coSited"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/YCbCrSubSamplingT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/YCbCrSubSamplingT/_422"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/YCbCrSubSamplingT/_420"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="phototoolkit.ecore#//exif/YesNoT">
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/YesNoT/Yes"/>
+        <genEnumLiterals ecoreEnumLiteral="phototoolkit.ecore#//exif/YesNoT/No"/>
+      </genEnums>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/BitsPerSampleTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/ColorSpaceTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/CompressionTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/ContrastTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/CustomRenderedTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/DatatypeTypeObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/ExposureModeTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/ExposureProgramTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/FileSourceTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/FlashModeTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/FlashReturnTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GainControlTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsAltitudeRefTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsBearingT"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsBearingTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsDifferentialTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsDirectionTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsDistanceRefTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsLatitudeRefTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsLatitudeT"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsLatitudeTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsLongitudeRefTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsLongitudeT"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsLongitudeTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsMeasureModeTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsSpeedRefTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/GpsStatusTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/InteroperabilityTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/LightSourceTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/MeteringModeTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/NonNegativeReal"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/NonNegativeRealObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/OrientationTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/PhotometricInterpretationTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/PlanarConfigurationTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/ResolutionTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/SaturationTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/SceneCaptureTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/SensingMethodTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/SubjectDistanceRangeTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/UuidT"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/WhiteBalanceTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/YCbCrPositioningTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/YCbCrSubSamplingTObject"/>
+      <genDataTypes ecoreDataType="phototoolkit.ecore#//exif/YesNoTObject"/>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/BitsPerSampleType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/BitsPerSampleType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/BitsPerSampleType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/Chromaticity">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/Chromaticity/x"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/Chromaticity/y"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/ColorSpaceType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/ColorSpaceType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/ColorSpaceType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/CompressionType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/CompressionType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/CompressionType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/ContrastType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/ContrastType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/ContrastType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/CustomRenderedType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/CustomRenderedType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/CustomRenderedType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/DateTimeType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/DateTimeType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/DateTimeType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/DateType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/DateType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/DateType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/DocumentRoot">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/DocumentRoot/mixed"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/DocumentRoot/xMLNSPrefixMap"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/DocumentRoot/xSISchemaLocation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/DocumentRoot/exifMetadata"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/ExifIfdType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/exifVersion"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/flashpixVersion"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/colorSpace"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/componentsConfiguration"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/compressedBitsPerPixel"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/pixelXDimension"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/pixelYDimension"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/makerNote"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/userComment"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/relatedSoundFile"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/dateTimeOriginal"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/dateTimeDigitized"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/subSecTime"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/subSecTimeOriginal"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/subSecTimeDigitized"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/exposureTime"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/fNumber"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/exposureProgram"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/spectralSensitivity"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/iSOSpeedRatings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/oECF"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/shutterSpeedValue"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/apertureValue"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/brightnessValue"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/exposureBiasValue"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/maxApertureValue"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/subjectDistance"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/meteringMode"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/lightSource"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/flash"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/focalLength"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/subjectArea"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/flashEnergy"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/spatialFrequencyResponse"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/focalPlaneXResolution"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/focalPlaneYResolution"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/focalPlaneResolutionUnit"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/subjectLocation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/exposureIndex"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/sensingMethod"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/fileSource"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/sceneType"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/cFAPattern"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/customRendered"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/exposureMode"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/whiteBalance"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/digitalZoomRatio"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/focalLengthIn35mmFilm"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/sceneCaptureType"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/gainControl"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/contrast"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/saturation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/sharpness"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/deviceSettingDescription"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/subjectDistanceRange"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/imageUniqueID"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/gamma"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/exifField1"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/exifField2"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifIfdType/exifField3"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/ExifIfdType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/ExifMetadataType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifMetadataType/tiffIfd"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifMetadataType/exifIfd"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifMetadataType/gpsIfd"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/ExifMetadataType/interoperabilityIfd"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/ExposureModeType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/ExposureModeType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/ExposureModeType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/ExposureProgramType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/ExposureProgramType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/ExposureProgramType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/FileSourceType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/FileSourceType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/FileSourceType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/FlashType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/FlashType/fired"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/FlashType/return"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/FlashType/mode"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/FlashType/function"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/FlashType/redEyeReduction"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/FlashType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GainControlType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GainControlType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GainControlType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GpsAltitudeRefType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsAltitudeRefType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsAltitudeRefType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GpsBearingType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsBearingType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsBearingType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GpsDifferentialType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsDifferentialType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsDifferentialType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GpsDirectionType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsDirectionType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsDirectionType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GpsDistanceRefType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsDistanceRefType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsDistanceRefType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GpsIfdType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSVersionID"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSLatitudeRef"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSLatitude"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSLongitudeRef"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSLongitude"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSAltitudeRef"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSAltitude"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSTimeStamp"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSSatellites"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSStatus"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSMeasureMode"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSDOP"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSSpeedRef"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSSpeed"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSTrackRef"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSTrack"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSImgDirectionRef"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSImgDirection"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSMapDatum"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSDestLatitudeRef"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSDestLatitude"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSDestLongitudeRef"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSDestLongitude"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSDestBearingRef"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSDestBearing"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSDestDistanceRef"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSDestDistance"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSProcessingMethod"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSAreaInformation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSDateStamp"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSDifferential"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSField1"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSField2"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/GpsIfdType/gPSField3"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsIfdType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GpsLatitudeRefType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsLatitudeRefType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsLatitudeRefType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GpsLatitudeType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsLatitudeType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsLatitudeType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GpsLongitudeRefType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsLongitudeRefType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsLongitudeRefType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GpsLongitudeType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsLongitudeType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsLongitudeType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GpsMeasureModeType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsMeasureModeType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsMeasureModeType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GpsSpeedRefType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsSpeedRefType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsSpeedRefType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/GpsStatusType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsStatusType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/GpsStatusType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/InteroperabilityIfdType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/InteroperabilityIfdType/interoperabilityIndex"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/InteroperabilityIfdType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/InteroperabilityType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/InteroperabilityType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/InteroperabilityType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/LightSourceType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/LightSourceType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/LightSourceType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/MeteringModeType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/MeteringModeType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/MeteringModeType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/NonNegativeIntegerType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/NonNegativeIntegerType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/NonNegativeIntegerType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/NonNegativeRealType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/NonNegativeRealType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/NonNegativeRealType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/OrientationType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/OrientationType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/OrientationType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/PhotometricInterpretationType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/PhotometricInterpretationType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/PhotometricInterpretationType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/PlanarConfigurationType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/PlanarConfigurationType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/PlanarConfigurationType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/PositiveIntegerType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/PositiveIntegerType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/PositiveIntegerType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/PrimaryChromaticitiesType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/PrimaryChromaticitiesType/color1"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/PrimaryChromaticitiesType/color2"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/PrimaryChromaticitiesType/color3"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/PrimaryChromaticitiesType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/RealType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/RealType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/RealType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/RepeatedFieldType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/RepeatedFieldType/field"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/RepeatedFieldType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/ResolutionType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/ResolutionType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/ResolutionType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/SaturationType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SaturationType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SaturationType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/SceneCaptureType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SceneCaptureType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SceneCaptureType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/SensingMethodType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SensingMethodType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SensingMethodType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/SharpnessType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SharpnessType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SharpnessType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/SingleFieldT">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SingleFieldT/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SingleFieldT/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SingleFieldT/datatype"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/SingleFieldType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SingleFieldType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/StringType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/StringType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/StringType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/StripByteCountsType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/StripByteCountsType/stripByteCount"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/StripByteCountsType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/StripByteCountType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/StripByteCountType/index"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/StripByteCountType/bytes"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/StripOffsetsType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/StripOffsetsType/stripOffset"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/StripOffsetsType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/StripOffsetType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/StripOffsetType/index"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/StripOffsetType/offset"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/SubjectAreaType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SubjectAreaType/diameter"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SubjectAreaType/width"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SubjectAreaType/height"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/SubjectDistanceRangeType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SubjectDistanceRangeType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SubjectDistanceRangeType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/SubjectLocationType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SubjectLocationType/centerX"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SubjectLocationType/centerY"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/SubjectLocationType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/TiffIfdType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/imageWidth"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/imageLength"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/bitsPerSample"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/compression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/photometricInterpretation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/orientation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/samplesPerPixel"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/planarConfiguration"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/yCbCrSubSampling"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/yCbCrPositioning"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/xResolution"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/yResolution"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/resolutionUnit"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/stripOffsets"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/rowsPerStrip"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/stripByteCounts"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/jPEGInterChangeFormat"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/jPEGInterChangeFormatLength"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/transferFunction"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/whitePoint"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/primaryChromaticities"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/yCbCrCoefficients"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/referenceBlackWhite"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/dateTime"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/imageDescription"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/make"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/model"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/software"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/artist"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/copyright"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/tiffField1"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/tiffField2"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference phototoolkit.ecore#//exif/TiffIfdType/tiffField3"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/TimeType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/TimeType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/TimeType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/UuidType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/UuidType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/UuidType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/WhiteBalanceType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/WhiteBalanceType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/WhiteBalanceType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/WhitePointType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/WhitePointType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/YCbCrCoefficientsType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/YCbCrCoefficientsType/coefficient1"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/YCbCrCoefficientsType/coefficient2"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/YCbCrCoefficientsType/coefficient3"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/YCbCrCoefficientsType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/YCbCrPositioningType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/YCbCrPositioningType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/YCbCrPositioningType/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="phototoolkit.ecore#//exif/YCbCrSubSamplingType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/YCbCrSubSamplingType/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute phototoolkit.ecore#//exif/YCbCrSubSamplingType/tag"/>
+      </genClasses>
+    </nestedGenPackages>
   </genPackages>
 </genmodel:GenModel>
