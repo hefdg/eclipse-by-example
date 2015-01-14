@@ -23,4 +23,9 @@ Require-Bundle: javax.inject;bundle-version="1.0.0",
  org.eclipse.core.databinding.property,
  org.eclipse.jface.databinding,
  com.ibm.icu,
- org.eclipse.emf.databinding.edit
+ org.eclipse.emf.databinding.edit,
+ javax.annotation,
+ org.eclipse.emf.ecp.ui.view;bundle-version="1.5.0",
+ org.eclipse.emf.ecp.ui.view.swt;bundle-version="1.5.0",
+ org.eclipse.emf.edit.ui
+Bundle-Activator: com.hsveclipse.phototoolkit.Activator

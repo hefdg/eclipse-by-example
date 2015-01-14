@@ -33,7 +33,6 @@ import org.eclipse.swt.widgets.Label;
 
 import com.hsveclipse.phototoolkit.Photo;
 import com.hsveclipse.phototoolkit.provider.PhototoolkitItemProviderAdapterFactory;
-import com.oracle.xmlns.ord.meta.exif.provider.ExifItemProviderAdapterFactory;
 
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.core.databinding.DataBindingContext;
@@ -155,7 +154,6 @@ public class PhotoEditorPart {
 				.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory
 				.addAdapterFactory(new PhototoolkitItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ExifItemProviderAdapterFactory());
 		adapterFactory
 				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
