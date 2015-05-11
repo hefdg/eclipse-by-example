@@ -13,13 +13,14 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.hsveclipse.phototoolkit.Gallery#getName <em>Name</em>}</li>
  *   <li>{@link com.hsveclipse.phototoolkit.Gallery#getUrl <em>Url</em>}</li>
  *   <li>{@link com.hsveclipse.phototoolkit.Gallery#getDescription <em>Description</em>}</li>
  *   <li>{@link com.hsveclipse.phototoolkit.Gallery#getPhotos <em>Photos</em>}</li>
+ *   <li>{@link com.hsveclipse.phototoolkit.Gallery#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.hsveclipse.phototoolkit.PhototoolkitPackage#getGallery()
  * @model
@@ -119,5 +120,31 @@ public interface Gallery extends EObject {
 	 * @generated
 	 */
 	EList<Photo> getPhotos();
+
+	/**
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Id</em>' attribute.
+	 * @see #setId(String)
+	 * @see com.hsveclipse.phototoolkit.PhototoolkitPackage#getGallery_Id()
+	 * @model id="true"
+	 * @generated
+	 */
+	String getId();
+
+	/**
+	 * Sets the value of the '{@link com.hsveclipse.phototoolkit.Gallery#getId <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * @see #getId()
+	 * @generated
+	 */
+	void setId(String value);
 
 } // Gallery

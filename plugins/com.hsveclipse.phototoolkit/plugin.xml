@@ -21,18 +21,4 @@
             class="com.hsveclipse.phototoolkit.util.PhototoolkitResourceFactoryImpl"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated phototoolkit -->
-      <package
-            uri="http://xmlns.oracle.com/ord/meta/exif"
-            class="com.hsveclipse.phototoolkit.exif.ExifPackage"
-            genModel="model/phototoolkit.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated phototoolkit -->
-      <parser
-            type="exif"
-            class="com.hsveclipse.phototoolkit.exif.util.ExifResourceFactoryImpl"/>
-   </extension>
 </plugin>

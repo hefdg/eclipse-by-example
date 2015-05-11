@@ -67,7 +67,7 @@ public interface PhototoolkitPackage extends EPackage {
 	int PHOTO = 0;
 
 	/**
-	 * The feature id for the '<em><b>ID</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -103,13 +103,13 @@ public interface PhototoolkitPackage extends EPackage {
 	int PHOTO__URI = 3;
 
 	/**
-	 * The feature id for the '<em><b>Exif</b></em>' containment reference.
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PHOTO__EXIF = 4;
+	int PHOTO__DESCRIPTION = 4;
 
 	/**
 	 * The number of structural features of the '<em>Photo</em>' class.
@@ -176,13 +176,22 @@ public interface PhototoolkitPackage extends EPackage {
 	int GALLERY__PHOTOS = 3;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GALLERY__ID = 4;
+
+	/**
 	 * The number of structural features of the '<em>Gallery</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GALLERY_FEATURE_COUNT = 4;
+	int GALLERY_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Gallery</em>' class.
@@ -192,6 +201,53 @@ public interface PhototoolkitPackage extends EPackage {
 	 * @ordered
 	 */
 	int GALLERY_OPERATION_COUNT = 0;
+
+
+	/**
+	 * The meta object id for the '{@link com.hsveclipse.phototoolkit.impl.SiteImpl <em>Site</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.hsveclipse.phototoolkit.impl.SiteImpl
+	 * @see com.hsveclipse.phototoolkit.impl.PhototoolkitPackageImpl#getSite()
+	 * @generated
+	 */
+	int SITE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Photos</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SITE__PHOTOS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Galleries</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SITE__GALLERIES = 1;
+
+	/**
+	 * The number of structural features of the '<em>Site</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SITE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Site</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SITE_OPERATION_COUNT = 0;
 
 
 	/**
@@ -205,15 +261,15 @@ public interface PhototoolkitPackage extends EPackage {
 	EClass getPhoto();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.hsveclipse.phototoolkit.Photo#getID <em>ID</em>}'.
+	 * Returns the meta object for the attribute '{@link com.hsveclipse.phototoolkit.Photo#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>ID</em>'.
-	 * @see com.hsveclipse.phototoolkit.Photo#getID()
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see com.hsveclipse.phototoolkit.Photo#getId()
 	 * @see #getPhoto()
 	 * @generated
 	 */
-	EAttribute getPhoto_ID();
+	EAttribute getPhoto_Id();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.hsveclipse.phototoolkit.Photo#getName <em>Name</em>}'.
@@ -249,15 +305,15 @@ public interface PhototoolkitPackage extends EPackage {
 	EAttribute getPhoto_Uri();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link com.hsveclipse.phototoolkit.Photo#getExif <em>Exif</em>}'.
+	 * Returns the meta object for the attribute '{@link com.hsveclipse.phototoolkit.Photo#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Exif</em>'.
-	 * @see com.hsveclipse.phototoolkit.Photo#getExif()
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see com.hsveclipse.phototoolkit.Photo#getDescription()
 	 * @see #getPhoto()
 	 * @generated
 	 */
-	EReference getPhoto_Exif();
+	EAttribute getPhoto_Description();
 
 	/**
 	 * Returns the meta object for class '{@link com.hsveclipse.phototoolkit.Gallery <em>Gallery</em>}'.
@@ -314,6 +370,49 @@ public interface PhototoolkitPackage extends EPackage {
 	EReference getGallery_Photos();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.hsveclipse.phototoolkit.Gallery#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see com.hsveclipse.phototoolkit.Gallery#getId()
+	 * @see #getGallery()
+	 * @generated
+	 */
+	EAttribute getGallery_Id();
+
+	/**
+	 * Returns the meta object for class '{@link com.hsveclipse.phototoolkit.Site <em>Site</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Site</em>'.
+	 * @see com.hsveclipse.phototoolkit.Site
+	 * @generated
+	 */
+	EClass getSite();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link com.hsveclipse.phototoolkit.Site#getPhotos <em>Photos</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Photos</em>'.
+	 * @see com.hsveclipse.phototoolkit.Site#getPhotos()
+	 * @see #getSite()
+	 * @generated
+	 */
+	EReference getSite_Photos();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link com.hsveclipse.phototoolkit.Site#getGalleries <em>Galleries</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Galleries</em>'.
+	 * @see com.hsveclipse.phototoolkit.Site#getGalleries()
+	 * @see #getSite()
+	 * @generated
+	 */
+	EReference getSite_Galleries();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -347,12 +446,12 @@ public interface PhototoolkitPackage extends EPackage {
 		EClass PHOTO = eINSTANCE.getPhoto();
 
 		/**
-		 * The meta object literal for the '<em><b>ID</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PHOTO__ID = eINSTANCE.getPhoto_ID();
+		EAttribute PHOTO__ID = eINSTANCE.getPhoto_Id();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -379,12 +478,12 @@ public interface PhototoolkitPackage extends EPackage {
 		EAttribute PHOTO__URI = eINSTANCE.getPhoto_Uri();
 
 		/**
-		 * The meta object literal for the '<em><b>Exif</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PHOTO__EXIF = eINSTANCE.getPhoto_Exif();
+		EAttribute PHOTO__DESCRIPTION = eINSTANCE.getPhoto_Description();
 
 		/**
 		 * The meta object literal for the '{@link com.hsveclipse.phototoolkit.impl.GalleryImpl <em>Gallery</em>}' class.
@@ -427,6 +526,40 @@ public interface PhototoolkitPackage extends EPackage {
 		 * @generated
 		 */
 		EReference GALLERY__PHOTOS = eINSTANCE.getGallery_Photos();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GALLERY__ID = eINSTANCE.getGallery_Id();
+
+		/**
+		 * The meta object literal for the '{@link com.hsveclipse.phototoolkit.impl.SiteImpl <em>Site</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.hsveclipse.phototoolkit.impl.SiteImpl
+		 * @see com.hsveclipse.phototoolkit.impl.PhototoolkitPackageImpl#getSite()
+		 * @generated
+		 */
+		EClass SITE = eINSTANCE.getSite();
+
+		/**
+		 * The meta object literal for the '<em><b>Photos</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SITE__PHOTOS = eINSTANCE.getSite_Photos();
+
+		/**
+		 * The meta object literal for the '<em><b>Galleries</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SITE__GALLERIES = eINSTANCE.getSite_Galleries();
 
 	}
 

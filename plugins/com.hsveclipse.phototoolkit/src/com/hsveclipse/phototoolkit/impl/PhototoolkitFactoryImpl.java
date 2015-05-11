@@ -58,6 +58,7 @@ public class PhototoolkitFactoryImpl extends EFactoryImpl implements Phototoolki
 		switch (eClass.getClassifierID()) {
 			case PhototoolkitPackage.PHOTO: return createPhoto();
 			case PhototoolkitPackage.GALLERY: return createGallery();
+			case PhototoolkitPackage.SITE: return createSite();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -81,6 +82,16 @@ public class PhototoolkitFactoryImpl extends EFactoryImpl implements Phototoolki
 	public Gallery createGallery() {
 		GalleryImpl gallery = new GalleryImpl();
 		return gallery;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Site createSite() {
+		SiteImpl site = new SiteImpl();
+		return site;
 	}
 
 	/**

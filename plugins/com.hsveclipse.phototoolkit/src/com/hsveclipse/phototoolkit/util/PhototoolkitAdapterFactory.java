@@ -76,6 +76,10 @@ public class PhototoolkitAdapterFactory extends AdapterFactoryImpl {
 				return createGalleryAdapter();
 			}
 			@Override
+			public Adapter caseSite(Site object) {
+				return createSiteAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -120,6 +124,20 @@ public class PhototoolkitAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGalleryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.hsveclipse.phototoolkit.Site <em>Site</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.hsveclipse.phototoolkit.Site
+	 * @generated
+	 */
+	public Adapter createSiteAdapter() {
 		return null;
 	}
 

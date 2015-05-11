@@ -2,7 +2,6 @@
  */
 package com.hsveclipse.phototoolkit;
 
-import com.hsveclipse.phototoolkit.exif.ExifMetadataType;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,14 +12,14 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- *   <li>{@link com.hsveclipse.phototoolkit.Photo#getID <em>ID</em>}</li>
+ *   <li>{@link com.hsveclipse.phototoolkit.Photo#getId <em>Id</em>}</li>
  *   <li>{@link com.hsveclipse.phototoolkit.Photo#getName <em>Name</em>}</li>
  *   <li>{@link com.hsveclipse.phototoolkit.Photo#getTags <em>Tags</em>}</li>
  *   <li>{@link com.hsveclipse.phototoolkit.Photo#getUri <em>Uri</em>}</li>
- *   <li>{@link com.hsveclipse.phototoolkit.Photo#getExif <em>Exif</em>}</li>
+ *   <li>{@link com.hsveclipse.phototoolkit.Photo#getDescription <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.hsveclipse.phototoolkit.PhototoolkitPackage#getPhoto()
  * @model
@@ -28,30 +27,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Photo extends EObject {
 	/**
-	 * Returns the value of the '<em><b>ID</b></em>' attribute.
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>ID</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>ID</em>' attribute.
-	 * @see #setID(String)
-	 * @see com.hsveclipse.phototoolkit.PhototoolkitPackage#getPhoto_ID()
-	 * @model
+	 * @return the value of the '<em>Id</em>' attribute.
+	 * @see #setId(String)
+	 * @see com.hsveclipse.phototoolkit.PhototoolkitPackage#getPhoto_Id()
+	 * @model id="true"
 	 * @generated
 	 */
-	String getID();
+	String getId();
 
 	/**
-	 * Sets the value of the '{@link com.hsveclipse.phototoolkit.Photo#getID <em>ID</em>}' attribute.
+	 * Sets the value of the '{@link com.hsveclipse.phototoolkit.Photo#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>ID</em>' attribute.
-	 * @see #getID()
+	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * @see #getId()
 	 * @generated
 	 */
-	void setID(String value);
+	void setId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -64,7 +63,7 @@ public interface Photo extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.hsveclipse.phototoolkit.PhototoolkitPackage#getPhoto_Name()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
@@ -122,29 +121,29 @@ public interface Photo extends EObject {
 	void setUri(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Exif</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Exif</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exif</em>' containment reference.
-	 * @see #setExif(ExifMetadataType)
-	 * @see com.hsveclipse.phototoolkit.PhototoolkitPackage#getPhoto_Exif()
-	 * @model containment="true"
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see com.hsveclipse.phototoolkit.PhototoolkitPackage#getPhoto_Description()
+	 * @model
 	 * @generated
 	 */
-	ExifMetadataType getExif();
+	String getDescription();
 
 	/**
-	 * Sets the value of the '{@link com.hsveclipse.phototoolkit.Photo#getExif <em>Exif</em>}' containment reference.
+	 * Sets the value of the '{@link com.hsveclipse.phototoolkit.Photo#getDescription <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exif</em>' containment reference.
-	 * @see #getExif()
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
 	 * @generated
 	 */
-	void setExif(ExifMetadataType value);
+	void setDescription(String value);
 
 } // Photo

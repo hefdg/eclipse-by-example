@@ -40,6 +40,15 @@ public interface PhototoolkitFactory extends EFactory {
 	Gallery createGallery();
 
 	/**
+	 * Returns a new object of class '<em>Site</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Site</em>'.
+	 * @generated
+	 */
+	Site createSite();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

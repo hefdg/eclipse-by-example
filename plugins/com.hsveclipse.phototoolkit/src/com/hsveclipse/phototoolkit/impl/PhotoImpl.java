@@ -4,13 +4,10 @@ package com.hsveclipse.phototoolkit.impl;
 
 import com.hsveclipse.phototoolkit.Photo;
 import com.hsveclipse.phototoolkit.PhototoolkitPackage;
-import com.hsveclipse.phototoolkit.exif.ExifMetadataType;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
@@ -21,33 +18,33 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- *   <li>{@link com.hsveclipse.phototoolkit.impl.PhotoImpl#getID <em>ID</em>}</li>
+ *   <li>{@link com.hsveclipse.phototoolkit.impl.PhotoImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.hsveclipse.phototoolkit.impl.PhotoImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.hsveclipse.phototoolkit.impl.PhotoImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link com.hsveclipse.phototoolkit.impl.PhotoImpl#getUri <em>Uri</em>}</li>
- *   <li>{@link com.hsveclipse.phototoolkit.impl.PhotoImpl#getExif <em>Exif</em>}</li>
+ *   <li>{@link com.hsveclipse.phototoolkit.impl.PhotoImpl#getDescription <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 	/**
-	 * The default value of the '{@link #getID() <em>ID</em>}' attribute.
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getID()
+	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getID() <em>ID</em>}' attribute.
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getID()
+	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
@@ -104,14 +101,24 @@ public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 	protected String uri = URI_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getExif() <em>Exif</em>}' containment reference.
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExif()
+	 * @see #getDescription()
 	 * @generated
 	 * @ordered
 	 */
-	protected ExifMetadataType exif;
+	protected static final String DESCRIPTION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,7 +144,7 @@ public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getID() {
+	public String getId() {
 		return id;
 	}
 
@@ -146,11 +153,11 @@ public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setID(String newID) {
-		String oldID = id;
-		id = newID;
+	public void setId(String newId) {
+		String oldId = id;
+		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhototoolkitPackage.PHOTO__ID, oldID, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhototoolkitPackage.PHOTO__ID, oldId, id));
 	}
 
 	/**
@@ -212,8 +219,8 @@ public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExifMetadataType getExif() {
-		return exif;
+	public String getDescription() {
+		return description;
 	}
 
 	/**
@@ -221,47 +228,11 @@ public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetExif(ExifMetadataType newExif, NotificationChain msgs) {
-		ExifMetadataType oldExif = exif;
-		exif = newExif;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PhototoolkitPackage.PHOTO__EXIF, oldExif, newExif);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setExif(ExifMetadataType newExif) {
-		if (newExif != exif) {
-			NotificationChain msgs = null;
-			if (exif != null)
-				msgs = ((InternalEObject)exif).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PhototoolkitPackage.PHOTO__EXIF, null, msgs);
-			if (newExif != null)
-				msgs = ((InternalEObject)newExif).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PhototoolkitPackage.PHOTO__EXIF, null, msgs);
-			msgs = basicSetExif(newExif, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhototoolkitPackage.PHOTO__EXIF, newExif, newExif));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case PhototoolkitPackage.PHOTO__EXIF:
-				return basicSetExif(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PhototoolkitPackage.PHOTO__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -273,15 +244,15 @@ public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PhototoolkitPackage.PHOTO__ID:
-				return getID();
+				return getId();
 			case PhototoolkitPackage.PHOTO__NAME:
 				return getName();
 			case PhototoolkitPackage.PHOTO__TAGS:
 				return getTags();
 			case PhototoolkitPackage.PHOTO__URI:
 				return getUri();
-			case PhototoolkitPackage.PHOTO__EXIF:
-				return getExif();
+			case PhototoolkitPackage.PHOTO__DESCRIPTION:
+				return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -296,7 +267,7 @@ public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PhototoolkitPackage.PHOTO__ID:
-				setID((String)newValue);
+				setId((String)newValue);
 				return;
 			case PhototoolkitPackage.PHOTO__NAME:
 				setName((String)newValue);
@@ -308,8 +279,8 @@ public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 			case PhototoolkitPackage.PHOTO__URI:
 				setUri((String)newValue);
 				return;
-			case PhototoolkitPackage.PHOTO__EXIF:
-				setExif((ExifMetadataType)newValue);
+			case PhototoolkitPackage.PHOTO__DESCRIPTION:
+				setDescription((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -324,7 +295,7 @@ public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PhototoolkitPackage.PHOTO__ID:
-				setID(ID_EDEFAULT);
+				setId(ID_EDEFAULT);
 				return;
 			case PhototoolkitPackage.PHOTO__NAME:
 				setName(NAME_EDEFAULT);
@@ -335,8 +306,8 @@ public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 			case PhototoolkitPackage.PHOTO__URI:
 				setUri(URI_EDEFAULT);
 				return;
-			case PhototoolkitPackage.PHOTO__EXIF:
-				setExif((ExifMetadataType)null);
+			case PhototoolkitPackage.PHOTO__DESCRIPTION:
+				setDescription(DESCRIPTION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -358,8 +329,8 @@ public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 				return tags != null && !tags.isEmpty();
 			case PhototoolkitPackage.PHOTO__URI:
 				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
-			case PhototoolkitPackage.PHOTO__EXIF:
-				return exif != null;
+			case PhototoolkitPackage.PHOTO__DESCRIPTION:
+				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -374,7 +345,7 @@ public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (ID: ");
+		result.append(" (id: ");
 		result.append(id);
 		result.append(", name: ");
 		result.append(name);
@@ -382,6 +353,8 @@ public class PhotoImpl extends MinimalEObjectImpl.Container implements Photo {
 		result.append(tags);
 		result.append(", uri: ");
 		result.append(uri);
+		result.append(", description: ");
+		result.append(description);
 		result.append(')');
 		return result.toString();
 	}

@@ -25,13 +25,14 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.hsveclipse.phototoolkit.impl.GalleryImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.hsveclipse.phototoolkit.impl.GalleryImpl#getUrl <em>Url</em>}</li>
  *   <li>{@link com.hsveclipse.phototoolkit.impl.GalleryImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link com.hsveclipse.phototoolkit.impl.GalleryImpl#getPhotos <em>Photos</em>}</li>
+ *   <li>{@link com.hsveclipse.phototoolkit.impl.GalleryImpl#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -105,6 +106,26 @@ public class GalleryImpl extends MinimalEObjectImpl.Container implements Gallery
 	 * @ordered
 	 */
 	protected EList<Photo> photos;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -205,6 +226,27 @@ public class GalleryImpl extends MinimalEObjectImpl.Container implements Gallery
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setId(String newId) {
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PhototoolkitPackage.GALLERY__ID, oldId, id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -216,6 +258,8 @@ public class GalleryImpl extends MinimalEObjectImpl.Container implements Gallery
 				return getDescription();
 			case PhototoolkitPackage.GALLERY__PHOTOS:
 				return getPhotos();
+			case PhototoolkitPackage.GALLERY__ID:
+				return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -242,6 +286,9 @@ public class GalleryImpl extends MinimalEObjectImpl.Container implements Gallery
 				getPhotos().clear();
 				getPhotos().addAll((Collection<? extends Photo>)newValue);
 				return;
+			case PhototoolkitPackage.GALLERY__ID:
+				setId((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -266,6 +313,9 @@ public class GalleryImpl extends MinimalEObjectImpl.Container implements Gallery
 			case PhototoolkitPackage.GALLERY__PHOTOS:
 				getPhotos().clear();
 				return;
+			case PhototoolkitPackage.GALLERY__ID:
+				setId(ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -286,6 +336,8 @@ public class GalleryImpl extends MinimalEObjectImpl.Container implements Gallery
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case PhototoolkitPackage.GALLERY__PHOTOS:
 				return photos != null && !photos.isEmpty();
+			case PhototoolkitPackage.GALLERY__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -306,6 +358,8 @@ public class GalleryImpl extends MinimalEObjectImpl.Container implements Gallery
 		result.append(url);
 		result.append(", description: ");
 		result.append(description);
+		result.append(", id: ");
+		result.append(id);
 		result.append(')');
 		return result.toString();
 	}
