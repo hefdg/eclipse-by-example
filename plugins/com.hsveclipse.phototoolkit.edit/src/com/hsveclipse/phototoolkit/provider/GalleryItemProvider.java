@@ -64,6 +64,7 @@ public class GalleryItemProvider
 			addUrlPropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
 			addPhotosPropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -157,6 +158,28 @@ public class GalleryItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Gallery_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Gallery_id_feature", "_UI_Gallery_type"),
+				 PhototoolkitPackage.Literals.GALLERY__ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Gallery.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -197,6 +220,7 @@ public class GalleryItemProvider
 			case PhototoolkitPackage.GALLERY__NAME:
 			case PhototoolkitPackage.GALLERY__URL:
 			case PhototoolkitPackage.GALLERY__DESCRIPTION:
+			case PhototoolkitPackage.GALLERY__ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

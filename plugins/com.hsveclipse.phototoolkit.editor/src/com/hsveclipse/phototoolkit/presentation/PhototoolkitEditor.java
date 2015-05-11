@@ -662,7 +662,6 @@ public class PhototoolkitEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new PhototoolkitItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new com.hsveclipse.phototoolkit.exif.provider.ExifItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

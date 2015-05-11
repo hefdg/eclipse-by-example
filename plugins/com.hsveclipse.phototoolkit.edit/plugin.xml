@@ -19,17 +19,4 @@
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
 
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated phototoolkit -->
-      <factory
-            uri="http://xmlns.oracle.com/ord/meta/exif"
-            class="com.hsveclipse.phototoolkit.exif.provider.ExifItemProviderAdapterFactory"
-            supportedTypes=
-              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-               org.eclipse.emf.edit.provider.ITreeItemContentProvider
-               org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
 </plugin>

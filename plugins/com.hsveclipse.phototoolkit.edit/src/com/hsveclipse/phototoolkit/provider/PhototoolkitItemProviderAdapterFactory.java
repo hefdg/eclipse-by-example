@@ -118,6 +118,29 @@ public class PhototoolkitItemProviderAdapterFactory extends PhototoolkitAdapterF
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.hsveclipse.phototoolkit.Site} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SiteItemProvider siteItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.hsveclipse.phototoolkit.Site}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSiteAdapter() {
+		if (siteItemProvider == null) {
+			siteItemProvider = new SiteItemProvider(this);
+		}
+
+		return siteItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -218,6 +241,7 @@ public class PhototoolkitItemProviderAdapterFactory extends PhototoolkitAdapterF
 	public void dispose() {
 		if (photoItemProvider != null) photoItemProvider.dispose();
 		if (galleryItemProvider != null) galleryItemProvider.dispose();
+		if (siteItemProvider != null) siteItemProvider.dispose();
 	}
 
 }

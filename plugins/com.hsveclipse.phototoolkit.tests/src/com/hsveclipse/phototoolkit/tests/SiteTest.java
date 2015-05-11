@@ -1,9 +1,9 @@
 /**
  */
-package com.hsveclipse.phototoolkit.exif.tests;
+package com.hsveclipse.phototoolkit.tests;
 
-import com.hsveclipse.phototoolkit.exif.ExifFactory;
-import com.hsveclipse.phototoolkit.exif.InteroperabilityIfdType;
+import com.hsveclipse.phototoolkit.PhototoolkitFactory;
+import com.hsveclipse.phototoolkit.Site;
 
 import junit.framework.TestCase;
 
@@ -11,19 +11,19 @@ import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Interoperability Ifd Type</b></em>'.
+ * A test case for the model object '<em><b>Site</b></em>'.
  * <!-- end-user-doc -->
  * @generated
  */
-public class InteroperabilityIfdTypeTest extends TestCase {
+public class SiteTest extends TestCase {
 
 	/**
-	 * The fixture for this Interoperability Ifd Type test case.
+	 * The fixture for this Site test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InteroperabilityIfdType fixture = null;
+	protected Site fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -31,36 +31,36 @@ public class InteroperabilityIfdTypeTest extends TestCase {
 	 * @generated
 	 */
 	public static void main(String[] args) {
-		TestRunner.run(InteroperabilityIfdTypeTest.class);
+		TestRunner.run(SiteTest.class);
 	}
 
 	/**
-	 * Constructs a new Interoperability Ifd Type test case with the given name.
+	 * Constructs a new Site test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InteroperabilityIfdTypeTest(String name) {
+	public SiteTest(String name) {
 		super(name);
 	}
 
 	/**
-	 * Sets the fixture for this Interoperability Ifd Type test case.
+	 * Sets the fixture for this Site test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void setFixture(InteroperabilityIfdType fixture) {
+	protected void setFixture(Site fixture) {
 		this.fixture = fixture;
 	}
 
 	/**
-	 * Returns the fixture for this Interoperability Ifd Type test case.
+	 * Returns the fixture for this Site test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InteroperabilityIfdType getFixture() {
+	protected Site getFixture() {
 		return fixture;
 	}
 
@@ -72,7 +72,7 @@ public class InteroperabilityIfdTypeTest extends TestCase {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(ExifFactory.eINSTANCE.createInteroperabilityIfdType());
+		setFixture(PhototoolkitFactory.eINSTANCE.createSite());
 	}
 
 	/**
@@ -86,4 +86,4 @@ public class InteroperabilityIfdTypeTest extends TestCase {
 		setFixture(null);
 	}
 
-} //InteroperabilityIfdTypeTest
+} //SiteTest

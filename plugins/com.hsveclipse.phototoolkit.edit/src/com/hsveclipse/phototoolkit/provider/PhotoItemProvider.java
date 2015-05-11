@@ -5,13 +5,11 @@ package com.hsveclipse.phototoolkit.provider;
 
 import com.hsveclipse.phototoolkit.Photo;
 import com.hsveclipse.phototoolkit.PhototoolkitPackage;
-import com.hsveclipse.phototoolkit.exif.ExifFactory;
 import java.util.Collection;
 import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -58,27 +56,28 @@ public class PhotoItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIDPropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addTagsPropertyDescriptor(object);
 			addUriPropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the ID feature.
+	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addIDPropertyDescriptor(Object object) {
+	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Photo_ID_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Photo_ID_feature", "_UI_Photo_type"),
+				 getString("_UI_Photo_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Photo_id_feature", "_UI_Photo_type"),
 				 PhototoolkitPackage.Literals.PHOTO__ID,
 				 true,
 				 false,
@@ -155,33 +154,25 @@ public class PhotoItemProvider
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Description feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(PhototoolkitPackage.Literals.PHOTO__EXIF);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Photo_description_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Photo_description_feature", "_UI_Photo_type"),
+				 PhototoolkitPackage.Literals.PHOTO__DESCRIPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -226,10 +217,8 @@ public class PhotoItemProvider
 			case PhototoolkitPackage.PHOTO__NAME:
 			case PhototoolkitPackage.PHOTO__TAGS:
 			case PhototoolkitPackage.PHOTO__URI:
+			case PhototoolkitPackage.PHOTO__DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case PhototoolkitPackage.PHOTO__EXIF:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -245,11 +234,6 @@ public class PhotoItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(PhototoolkitPackage.Literals.PHOTO__EXIF,
-				 ExifFactory.eINSTANCE.createExifMetadataType()));
 	}
 
 	/**

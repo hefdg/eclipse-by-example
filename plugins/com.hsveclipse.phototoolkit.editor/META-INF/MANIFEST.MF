@@ -2,14 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.hsveclipse.phototoolkit.editor;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.0.1.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: com.hsveclipse.phototoolkit.presentation.PhototoolkitEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: com.hsveclipse.phototoolkit.exif.presentation,
- com.hsveclipse.phototoolkit.presentation
+Export-Package: com.hsveclipse.phototoolkit.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  com.hsveclipse.phototoolkit.edit;visibility:=reexport,

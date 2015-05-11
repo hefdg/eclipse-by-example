@@ -23,18 +23,6 @@
    </extension>
 
    <extension point="org.eclipse.ui.editors">
-      <!-- @generated phototoolkit -->
-      <editor
-            id="com.hsveclipse.phototoolkit.exif.presentation.ExifEditorID"
-            name="%_UI_ExifEditor_label"
-            icon="icons/full/obj16/ExifModelFile.gif"
-            extensions="exif"
-            class="com.hsveclipse.phototoolkit.exif.presentation.ExifEditor"
-            contributorClass="com.hsveclipse.phototoolkit.exif.presentation.ExifActionBarContributor">
-      </editor>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
       <!-- @generated exif -->
       <editor
             id="com.oracle.xmlns.ord.meta.exif.presentation.ExifEditorID"
@@ -58,20 +46,5 @@
       </editor>
    </extension>
 
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated phototoolkit -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="com.hsveclipse.phototoolkit.exif.presentation.ExifModelWizardID"
-            name="%_UI_ExifModelWizard_label"
-            class="com.hsveclipse.phototoolkit.exif.presentation.ExifModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/ExifModelFile.gif">
-         <description>%_UI_ExifModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
+null
 </plugin>

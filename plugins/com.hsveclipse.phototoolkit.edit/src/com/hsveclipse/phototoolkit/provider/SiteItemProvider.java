@@ -1,15 +1,12 @@
 /**
  */
-package com.hsveclipse.phototoolkit.exif.provider;
+package com.hsveclipse.phototoolkit.provider;
 
 
-import com.hsveclipse.phototoolkit.exif.ExifPackage;
-import com.hsveclipse.phototoolkit.exif.StripByteCountType;
+import com.hsveclipse.phototoolkit.PhototoolkitFactory;
+import com.hsveclipse.phototoolkit.PhototoolkitPackage;
 
-import com.hsveclipse.phototoolkit.provider.PhototoolkitEditPlugin;
-
-import java.math.BigInteger;
-
+import com.hsveclipse.phototoolkit.Site;
 import java.util.Collection;
 import java.util.List;
 
@@ -18,24 +15,23 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link com.hsveclipse.phototoolkit.exif.StripByteCountType} object.
+ * This is the item provider adapter for a {@link com.hsveclipse.phototoolkit.Site} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class StripByteCountTypeItemProvider 
+public class SiteItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -49,7 +45,7 @@ public class StripByteCountTypeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StripByteCountTypeItemProvider(AdapterFactory adapterFactory) {
+	public SiteItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -64,65 +60,50 @@ public class StripByteCountTypeItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIndexPropertyDescriptor(object);
-			addBytesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Index feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_StripByteCountType_index_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StripByteCountType_index_feature", "_UI_StripByteCountType_type"),
-				 ExifPackage.eINSTANCE.getStripByteCountType_Index(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(PhototoolkitPackage.Literals.SITE__PHOTOS);
+			childrenFeatures.add(PhototoolkitPackage.Literals.SITE__GALLERIES);
+		}
+		return childrenFeatures;
 	}
 
 	/**
-	 * This adds a property descriptor for the Bytes feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBytesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_StripByteCountType_bytes_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StripByteCountType_bytes_feature", "_UI_StripByteCountType_type"),
-				 ExifPackage.eINSTANCE.getStripByteCountType_Bytes(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
-	 * This returns StripByteCountType.gif.
+	 * This returns Site.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/StripByteCountType"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Site"));
 	}
 
 	/**
@@ -133,11 +114,7 @@ public class StripByteCountTypeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		BigInteger labelValue = ((StripByteCountType)object).getIndex();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_StripByteCountType_type") :
-			getString("_UI_StripByteCountType_type") + " " + label;
+		return getString("_UI_Site_type");
 	}
 	
 
@@ -152,10 +129,10 @@ public class StripByteCountTypeItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(StripByteCountType.class)) {
-			case ExifPackage.STRIP_BYTE_COUNT_TYPE__INDEX:
-			case ExifPackage.STRIP_BYTE_COUNT_TYPE__BYTES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+		switch (notification.getFeatureID(Site.class)) {
+			case PhototoolkitPackage.SITE__PHOTOS:
+			case PhototoolkitPackage.SITE__GALLERIES:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -171,6 +148,16 @@ public class StripByteCountTypeItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(PhototoolkitPackage.Literals.SITE__PHOTOS,
+				 PhototoolkitFactory.eINSTANCE.createPhoto()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(PhototoolkitPackage.Literals.SITE__GALLERIES,
+				 PhototoolkitFactory.eINSTANCE.createGallery()));
 	}
 
 	/**
