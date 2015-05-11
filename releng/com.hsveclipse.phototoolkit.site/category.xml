@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <bundle id="com.hsveclipse.phototoolkit" version="0.0.1.qualifier">
+      <category name="com.hsveclipse.phototoolkit.runtime"/>
+   </bundle>
+   <category-def name="com.hsveclipse.phototoolkit.runtime" label="HSV Eclipse PHototoolkit"/>
+</site>
