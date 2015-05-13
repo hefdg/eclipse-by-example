@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Application
 Bundle-SymbolicName: com.hsveclipse.phototoolkit.application;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.0.1.qualifier
 Bundle-Vendor: HSVECLIPSE
 Require-Bundle: javax.inject;bundle-version="1.0.0",
  org.eclipse.core.runtime,
@@ -14,7 +14,7 @@ Require-Bundle: javax.inject;bundle-version="1.0.0",
  org.eclipse.e4.core.di,
  org.eclipse.e4.ui.di,
  org.eclipse.e4.core.contexts,
- com.hsveclipse.phototoolkit;bundle-version="0.1.0",
+ com.hsveclipse.phototoolkit;bundle-version="0.0.1",
  org.eclipse.emf.edit,
  com.hsveclipse.phototoolkit.edit,
  org.eclipse.core.databinding,

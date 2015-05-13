@@ -115,7 +115,7 @@ public class PhotoListPart {
 		for (Object object : structured.toList()) {
 			Photo photo = (Photo) object;
 			java.util.List<MPart> parts = modelService.findElements(window,
-					photo.getID(), MPart.class, null);
+					photo.getId(), MPart.class, null);
 			if (parts != null && parts.size() > 0) {
 				for (MPart part : parts) {
 					partService.activate(part);
@@ -134,7 +134,7 @@ public class PhotoListPart {
 	public Photo createPhoto() {
 		Photo photo = PhototoolkitFactory.eINSTANCE.createPhoto();
 		String id = EcoreUtil.generateUUID();
-		photo.setID(id);
+		photo.setId(id);
 		photo.setName("New Photo");
 		photos.add(photo);
 		photo.eAdapters().add(adapter);

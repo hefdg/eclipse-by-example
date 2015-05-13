@@ -67,7 +67,7 @@ public class PhotoPart {
 		} else {
 			domain.getResourceSet().getResources().add(photo.eResource());
 			photo.eAdapters().add(adapter);
-			part.setElementId(photo.getID());
+			part.setElementId(photo.getId());
 			part.setLabel(photo.getName());
 		}
 		domain.getCommandStack().addCommandStackListener(listener);
